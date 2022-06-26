@@ -17,5 +17,7 @@ class ViewController: UIViewController {
         let nome = nomeTextField.text
         let felicidade = felicidadeTextField.text
         
-        print("comi \(nome) e fiquei com felicidade: \(felicidade)")    }
+        print("comi \(nome) e fiquei com felicidade: \(felicidade)")
+        
+    }
 }
