@@ -1,43 +1,71 @@
 import UIKit
 
-let nome = "churros"
-let felicidade: Int = 5
-let calorias: Double = 79.5
-let vegetal: Bool = false
-
-//func alimentoConsumido() {
-//    print("o alimento consumido foi: \(nome)")
-//}
-
-//alimentoConsumido()
-//alimentoConsumido()
-
-func alimentoConsumido(_ nome: String, _ calorias: Double) {
-print("o alimento consumido foi: \(nome), com calorias: \(calorias)")
-}
-
-alimentoConsumido(nome, calorias)
-
-//código omitido
-
-let totalDeCalorias = [50.5, 100, 300, 500, 450]
-//print(totalDeCalorias)
-
-//código omitido
-
-for caloria in totalDeCalorias {
-    print(caloria)
-}
-
-func todasCalorias(totalDeCalorias: [Double]) -> Double {
-    var total: Double = 0
-
-    for caloria in totalDeCalorias {
-        total += caloria
+class Refeicao {
+    
+    // MARK: - Atributos
+    
+    var nome: String
+    var felicidade: String
+    var itens: Array<Item> = []
+    
+    // MARK: - Construtor
+    
+    init(nome: String, felicidade: String) {
+        self.nome = nome
+        self.felicidade = felicidade
     }
-    return total
+    
+    // MARK: - Metodos
+    
+    func totalDeCalorias() -> Double {
+        var total = 0.0
+        
+        for item in itens {
+            total += item.calorias
+        }
+        
+        return total
+    }
 }
 
-let total = todasCalorias(totalDeCalorias: [50.5, 100, 400])
+class Item {
+    var nome: String
+    var calorias: Double
+    
+    init(nome: String, calorias: Double) {
+        self.nome = nome
+        self.calorias = calorias
+    }
+}
 
-print(total)
+let arroz = Item(nome: "Arroz", calorias: 51.0)
+let feijao = Item(nome: "Feijão", calorias: 90.0)
+let contraFile = Item(nome: "Contra Filé", calorias: 287.0)
+
+let refeicao = Refeicao(nome: "Almoço", felicidade: "5")
+refeicao.itens.append(arroz)
+refeicao.itens.append(feijao)
+refeicao.itens.append(contraFile)
+
+print(refeicao.nome)
+if let primeiroItemDaLista = refeicao.itens.first {
+    print(primeiroItemDaLista.nome)
+}
+
+print(refeicao.totalDeCalorias())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
